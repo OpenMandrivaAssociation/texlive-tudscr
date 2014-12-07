@@ -6,7 +6,7 @@
 # catalog-version 2.01
 Name:		texlive-tudscr
 Version:	2.01
-Release:	2
+Release:	3
 Summary:	Typeset documents in the corporate style of TU Dresden
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/tudscr
