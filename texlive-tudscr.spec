@@ -1,6 +1,6 @@
 Name:		texlive-tudscr
 Version:	2.05m
-Release:	1
+Release:	2
 Summary:	Typeset documents in the corporate style of TU Dresden
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/tudscr
