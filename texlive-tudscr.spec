@@ -3,7 +3,7 @@ Version:	64085
 Release:	2
 Summary:	Typeset documents in the corporate style of TU Dresden
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/tudscr
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/tudscr
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.doc.r%{version}.tar.xz
