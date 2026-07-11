@@ -1,56 +1,55 @@
-Name:		texlive-tudscr
-Version:	64085
-Release:	2
-Summary:	Typeset documents in the corporate style of TU Dresden
+%global tl_name tudscr
+%global tl_revision 64085
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.06o
+Release:	%{tl_revision}.1
+Summary:	Corporate Design of Technische Universitat Dresden
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/tudscr
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.source.r%{version}.tar.xz
+License:	lppl1.3c
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tudscr.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Requires:	texlive(cbfonts)
+Requires:	texlive(environ)
+Requires:	texlive(etoolbox)
+Requires:	texlive(geometry)
+Requires:	texlive(graphics)
+Requires:	texlive(greek-inputenc)
+Requires:	texlive(iwona)
+Requires:	texlive(koma-script)
+Requires:	texlive(mathastext)
+Requires:	texlive(mweights)
+Requires:	texlive(oberdiek)
+Requires:	texlive(opensans)
+Requires:	texlive(trimspaces)
+Requires:	texlive(xcolor)
+Requires:	texlive(xpatch)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The bundle provides classes and packages, whose aim is to
-typeset LaTeX documents in the Corporate Design of the
-Technische Universitat Dresden. It bases on the KOMA-Script
-document classes. The fonts Univers and DIN-Bold are necessary.
-(The fonts are available on request for staff and students of
-the Technische Universitat Dresden.) The bundle offers: the
-three document classes tudscrartcl, tudscrreprt and tudscrbook
-which serve as drop-in replacements for scrartcl, scrreprt and
-scrreprt. the package tudscrsupervisor, which provides
-environments and macros to create tasks, evaluations and
-notices for scientific theses, the package mathswap for
-swapping math delimiters within numbers (cf. ionumbers), and
-the package twocolfix that the position of headings in two
-column layout.
+The TUD-Script bundle provides both classes and packages in order to
+create LaTeX documents in the corporate design of the Technische
+Universitat Dresden. It bases on the KOMA-Script bundle, which must
+necessarily be present. For questions, problems and comments, please
+refer to either the LaTeX forum of the Dresden University of Technology
+or the GitHub "tudscr" repository. The bundle offers: the three document
+classes tudscrartcl, tudscrreprt, and tudscrbook which serve as wrapper
+classes for scrartcl, scrreprt, and scrbook, the class tudscrposter for
+creating posters, the package tudscrsupervisor providing environments
+and macros to create tasks, evaluations and notices for scientific
+theses, the package tudscrfonts, which makes the corporate design fonts
+of the Technische Universitat Dresden available for LaTeX standard
+classes and KOMA-Script classes, the package fix-tudscrfonts, which
+provides the same fonts to additional corporate design classes not
+related to TUD-Script, the package tudscrcomp, which simplifies the
+switch to TUD-Script from external corporate design classes, the package
+mathswap for swapping math delimiters within numbers (similar to
+ionumbers), the package twocolfix for fixing the positioning bug of
+headings in twocolumn layout, and a comprehensive user documentation as
+well as several tutorials.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/tudscr
-%doc %{_texmfdistdir}/doc/latex/tudscr
-#- source
-%doc %{_texmfdistdir}/source/latex/tudscr
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
